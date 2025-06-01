@@ -1,0 +1,21 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class teacher{
+public:
+string name;
+string subject;
+string dept;
+double sal;
+void changedept(string newdept){
+    dept=newdept;
+}
+};
+int main(){
+    teacher t1;
+    t1.name="geetika";
+    t1.subject="c++";
+    t1.dept="Cs";
+    t1.sal=25000;
+    cout << t1.name << endl;
+}
