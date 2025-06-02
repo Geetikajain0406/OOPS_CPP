@@ -1,0 +1,50 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class teacher{
+public:
+//non_parameterized
+teacher(){
+        dept="computer science";
+    }
+    //parameterized
+    teacher (string n,string s,string d,double salary){
+        name=n;
+        subject=s;
+        dept=d;
+        sal=salary;
+    }
+string name;
+string subject;
+string dept;
+double sal;
+void getinfo(){
+    cout<<"name : "<<name<<endl;
+    cout<<"subject : "<<subject<<endl;
+    cout<<"dept : "<<dept<<endl;
+    cout<<"salary : "<<sal<<endl;
+}
+//copy constructor
+teacher(teacher &orgobj){
+    cout<<"i am custom copy"<<endl;
+    this->name=orgobj.name;
+    this->dept=orgobj.dept;
+    this->subject=orgobj.subject;
+    this->sal=orgobj.sal;
+}
+void changedept(string newdept){
+    dept=newdept;
+}
+};
+int main(){
+    teacher t1("geet","c++","cs",3000);
+    teacher t2(t1);
+    t2.getinfo();//default copy constructor
+    
+    //cout << t1.dept << endl;
+    //t1.name="geetika";
+    //t1.subject="c++";
+    //t1.dept="Cs";
+    //t1.sal=25000;
+    //cout << t1.name << endl;
+}
