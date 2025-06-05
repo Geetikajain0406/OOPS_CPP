@@ -1,0 +1,97 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class teacher{
+public:
+//non_parameterized
+teacher(){
+        dept="computer science";
+    }
+    //parameterized
+    teacher (string n,string s,string d,double salary){
+        name=n;
+        subject=s;
+        dept=d;
+        sal=salary;
+    }
+string name;
+string subject;
+string dept;
+double sal;
+void getinfo(){
+    cout<<"name : "<<name<<endl;
+    cout<<"subject : "<<subject<<endl;
+    cout<<"dept : "<<dept<<endl;
+    cout<<"salary : "<<sal<<endl;
+}
+//copy constructor
+teacher(teacher &orgobj){
+    cout<<"i am custom copy"<<endl;
+    this->name=orgobj.name;
+    this->dept=orgobj.dept;
+    this->subject=orgobj.subject;
+    this->sal=orgobj.sal;
+}
+void changedept(string newdept){
+    dept=newdept;
+}
+//destructor
+~teacher(){
+    cout << "ji i delete everything \n";
+}
+};
+//parent class
+class person{
+public:
+string name;
+int age;
+person(string n,int a){
+   this->name=n;
+    this->age=a;
+}
+// person(){
+//     //in constructor parent class const calls is 1st
+// cout<<"parent class constructor\n";
+// }
+~person(){
+    //in destructor parent class  calls is 2nd
+    cout<<"parent class destructor\n";
+}
+};
+//child class
+class student : public person{
+    public:
+int rollno;
+student(string n,int a,int rollno): person(n,a)// to call paraetrized const from parent 
+{
+    //in constructor child class const calls is 2nd
+    // cout<<"child constructor\n";
+    this->rollno=rollno;
+}
+~student(){
+    //in destructor child class  calls is 1st
+    cout<<"child destructor\n";
+}
+void getinfo(){
+cout << "name :"<<name<<endl;
+cout << "age :"<<age<<endl;
+cout << "rollno :"<<rollno<<endl;
+}
+};
+int main(){
+    //teacher t1("geet","c++","cs",3000);
+    //teacher t2(t1);
+    //t1.getinfo();//default copy constructor    
+    //cout << t1.dept << endl;
+    //t1.name="geetika";
+    //t1.subject="c++";
+    //t1.dept="Cs";
+    //t1.sal=25000;
+    //cout << t1.name << endl;
+    student s1("geet",18,90);
+    // s1.name="geet";
+    // s1.age=18;
+    // s1.rollno=67;
+    s1.getinfo();
+    return 0;
+}
