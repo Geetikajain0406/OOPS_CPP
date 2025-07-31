@@ -1,0 +1,21 @@
+// User function template for C++
+class Solution {
+  public:
+  bool isvowel(char ch){
+      ch=tolower(ch);
+      return (ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u');
+          
+      
+  }
+
+    string removeVowels(string& s) {
+        string result="";
+        for(int i=0;i<s.length();i++){
+        if (!isvowel(s[i])){
+            result+=s[i];
+            
+        }
+        }
+        return result;
+    }
+};
