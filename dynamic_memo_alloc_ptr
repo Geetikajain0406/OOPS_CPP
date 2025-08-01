@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+int *ptr;
+ptr=new int;
+if(!ptr){
+    cout<<"no memo allocation is done"<<endl;
+}
+else{
+    * ptr=100;
+    cout<<"the value of ptr is"<<*ptr<<endl;
+    cout<<"the address where value is stored"<<ptr<<endl;
+}
+    return 0;
+}
