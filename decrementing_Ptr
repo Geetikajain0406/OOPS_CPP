@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int * ptr;
+    const int max=4;
+    int arr[max]={1,2,3,4};
+    ptr=&arr[max-1];
+    for(int i=max;i>0;i--){
+        cout<<"the value of arr is["<<i<<"]=";
+        cout<<*ptr<<endl;
+         cout<<"the address of arr is["<<i<<"]=";
+        cout<<ptr<<endl;
+        ptr--;
+        
+    }
+    
+
+    return 0;
+    
+
+}
