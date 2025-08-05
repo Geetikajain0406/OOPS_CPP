@@ -10,7 +10,7 @@ int main() {
         cout<<*ptr<<endl;
          cout<<"the address of arr is["<<i<<"]=";
         cout<<ptr<<endl;
-        ptr--;
+        ptr++;
         
     }
     
