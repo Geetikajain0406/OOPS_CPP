@@ -1,0 +1,26 @@
+class Account
+
+{
+int account no;
+
+char type;
+
+float balance;
+
+float deposit (float amount)
+
+{
+balance+= amount;
+
+return amount;
+
+}
+
+float withdraw (float amount)
+
+{
+balance-= amount;
+
+return amount;
+
+} obj1, obj2
