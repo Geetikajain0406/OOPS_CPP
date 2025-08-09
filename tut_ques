@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+class rect{
+    private:
+    int l,h;
+public:
+rect(int len,int hei){
+    l=len;
+    h=hei;
+}
+    int area(){
+        return l*h;
+    }
+};
+    
+
+class cir{
+    private:
+    float r;
+    public:
+    cir(float rad){
+        r=rad;
+    }
+    float area(){
+        return 3.14*r*r;
+    }
+};
+int main() {
+    rect r1(1,2);
+cout << "Rectangle Area: " << r1.area() << endl;
+cir e1(2);
+cout << "circle: " << e1.area() << endl;
+    
+
+    return 0;
+}
