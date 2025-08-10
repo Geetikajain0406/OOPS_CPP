@@ -1,0 +1,64 @@
+#include <iostream>
+#include<string>
+using namespace std;
+class lib{
+    private:
+    int bno;
+    string bname;
+    string auth;
+    float price;
+    int copi;
+    int tcopi;
+    public:
+    void setdata(int no,string name,string au,float pr,int copy,int tcopy){
+        bno=no;
+        bname=name;
+        auth=au;
+        price=pr;
+        copi=copy;
+        tcopi=tcopy;
+    }
+    void issue(){
+        if(tcopi>copi){
+            copi++;
+            cout << "Book issued successfully!\n";
+        }
+        else{
+            cout << "No copies available to issue.\n";
+        }
+    }
+    void noissue(){
+        if (copi > 0) {
+            copi--;
+            cout << "Book returned successfully!\n";
+        } else {
+            cout << "No book is currently issued.\n";
+        }
+    }
+    
+    void display() {
+        cout << "\nBook Number: " << bno;
+        cout << "\nBook Name: " << bname;
+        cout << "\nAuthor: " << auth;
+        cout << "\nPrice: Rs." << price;
+        cout << "\nTotal Copies: " << tcopi;
+        cout << "\nCopies Issued: " << copi<< "\n";
+    }
+};
+int main() {
+lib b1;
+
+    // Initial values set
+    b1.setdata(101, "C++ Basics", "Bjarne Stroustrup", 350.0, 5, 2);
+
+    b1.display();
+
+ b1.noissue();
+    b1.display(); 
+    b1.issue();
+    b1.display();
+
+   
+
+    return 0;
+}
