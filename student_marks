@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, pos, value;
+
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    // Dynamic allocation
+    int* marks = new int[n];
+
+    // Input marks
+    cout << "Enter marks of " << n << " students:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> marks[i];
+    }
+
+    // ----- INSERTION -----
+    cout << "\nEnter position to insert new mark (0-based index): ";
+    cin >> pos;
+    cout << "Enter mark to insert: ";
+    cin >> value;
+
+    // Create new array with +1 size
+    int* newMarks = new int[n + 1];
+
+    for (int i = 0, j = 0; i < n + 1; i++) {
+        if (i == pos) {
+            newMarks[i] = value; // insert new value
+        } else {
+            newMarks[i] = marks[j++];
+        }
+    }
+
+    delete[] marks; // free old memory
+    marks = newMarks;
+    n++;
+
+    cout << "\nArray after insertion: ";
+    for (int i = 0; i < n; i++) {
+        cout << marks[i] << " ";
+    }
+    cout << endl;
+
+    // ----- DELETION -----
+    cout << "\nEnter position to delete mark (0-based index): ";
+    cin >> pos;
+
+    // Create new array with -1 size
+    int* delMarks = new int[n - 1];
+    for (int i = 0, j = 0; i < n; i++) {
+        if (i != pos) {
+            delMarks[j++] = marks[i];
+        }
+    }
+
+    delete[] marks;
+    marks = delMarks;
+    n--;
+
+    cout << "\nArray after deletion: ";
+    for (int i = 0; i < n; i++) {
+        cout << marks[i] << " ";
+    }
+    cout << endl;
+
+    // Free final memory
+    delete[] marks;
+
+    return 0;
+}
