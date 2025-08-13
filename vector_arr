@@ -1,0 +1,51 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class vec{
+int arr[30];
+int size;
+public:
+    void create(int n){
+    size=n;
+    cout<<"enter value for vect\n";
+    for(int i=0;i<size;i++){
+        cin>>arr[i];
+    }
+    }
+    void modify(int idx,int n){
+    if(idx>=0 && idx<size){
+          arr[idx]=n;
+          cout<<"the vector is modified\n";}
+          else{
+            cout<<"invalid idx \n";
+          }
+}
+void mul(int sc){
+for(int i=0;i<size;i++){
+sc *= arr[i];
+}
+cout<<"the vector is multiplied\n";
+}
+void display(){
+cout<<"(";
+for(int i=0;i<size;i++){
+    cout<<arr[i];
+    if(i != size-1){
+        cout<<",";
+    }
+
+}
+cout<<")\n";}
+};
+int main(){
+   vec v;
+   int n;
+   cout<<"enter size for vector";
+   cin>>n;
+   v.create(n);
+   v.modify(2,40);
+   v.mul(3);
+   v.display();
+return 0;
+}
+
