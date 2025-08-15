@@ -1,0 +1,33 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+class rect{
+    float l,br;
+    public:
+    rect(){}
+    rect(float,float);
+    void setdim();
+    void getdim();
+};
+rect::rect(float a,float b){
+    l=a;
+    br=b;
+}
+void rect::setdim(){
+    cout<<"enter l and  for rectangle";
+    cin>>l>>br;
+    return;
+}
+void rect::getdim(){
+    cout<<"length"<<l<<endl;
+    cout<<"breadth"<<br<<endl;
+}
+int main() {
+  rect *r1,*r2;
+  r1=new rect();
+  r2=new rect(10,20);
+  r1->setdim();
+  r1->getdim();
+  r2->getdim();
+    return 0;
+}
