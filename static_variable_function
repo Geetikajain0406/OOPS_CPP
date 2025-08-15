@@ -1,0 +1,24 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+class test{
+    public:
+    static int count;
+    test(){
+        count++;
+    }
+    static void show(){
+       cout<<count<<endl; 
+    }
+};
+int test::count=0;
+int main() {
+ test t1,t2;
+// STATIC MEMBER FUNCTION
+ test::show();
+ t1.show();
+ //STATIC MEMBER VARIABLE
+ cout<<&t1.count<<endl;
+  cout<<&t2.count<<endl;
+    return 0;
+}
