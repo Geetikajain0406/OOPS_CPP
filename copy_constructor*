@@ -1,0 +1,28 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+class test{
+    int *x;
+    public:
+    test(int a){
+        x=new int(a);
+    }
+    test(test &ref){
+        x=new int(*ref.x);
+    }
+    void set(int b){
+        *x=b;
+    }
+    void display(){
+        cout<<"the value of x is:"<<*x<<endl;
+    }
+};
+
+int main() {
+ test a(3);
+ test b=a;
+ a.set(2);
+ a.display();
+  b.display();
+    return 0;
+}
