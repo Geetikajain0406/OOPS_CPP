@@ -1,0 +1,18 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class first{
+    string name;
+public:
+    void assigning(string n){
+    name =n;}
+    void print(){
+    cout<<"the student name is "<<name<<endl;}
+};
+
+int main(){
+   first f;
+   f.assigning("geetika");
+   f.print();
+return 0;
+}
