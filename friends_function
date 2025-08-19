@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+class box{
+    int len;
+    public:
+    box(int l){
+        len=l;
+    }
+    friend void printdata(box b);
+};
+void printdata(box b){
+    cout<<"the box length is: "<<b.len<<endl;
+}
+int main() {
+    box a(10);
+    printdata(a);
+    return 0;
+} 
+
+ADDED FUNCTION WITH CLASSES
+
+#include <iostream>
+using namespace std;
+class b;
+class a{
+    int x;
+    public:
+    a(int y){
+        x=y;
+    }
+    friend void add(a,b);
+};
+class b{
+    int c;
+    public:
+    b(int y){
+        c=y;
+    }
+    friend void add(a,b);
+};
+void add(a A,b B){
+    cout<<"the added value is: "<<A.x+B.c<<endl;
+}
+int main() {
+   a a1(12);
+   b b1(8);
+   add(a1,b1);
+    return 0;
+}
