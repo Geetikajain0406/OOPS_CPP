@@ -1,0 +1,119 @@
+
+
+
+ASSIGNMENT-3
+
+
+ANS1)
+#include<iostream>
+using namespace std;
+class test{
+    int id;
+    string name;
+    string branch;
+    float cgpa;
+public:
+    test(int i,string n,string b,float c){
+    id=i;
+    name=n;
+    branch=b;
+    cgpa=c;}
+     test(int i,string n,float c){
+    id=i;
+    name=n;
+    branch="cse";
+    cgpa=c;}
+     test(){
+    id=1;
+    name="unknown";
+    branch="cse";
+    cgpa=6;}
+    void set_id(int i){
+     id=i;
+    }
+    void set_name(string n){
+    name=n;}
+      void set_branch(string b){
+      branch=b;}
+      void set_cgpa(float c){
+      cgpa=c;}
+      void print(){
+      cout<<"the student info is: "<<id
+      <<endl<<"name:"<<name<<endl<<"branch:"<<branch
+      <<endl<<"cgpa is:"<<cgpa<<endl;}
+};
+int main(){
+    test t1;
+    t1.print();
+    test t2(1,"geet",9);
+    test t3(1,"geetika","it",10);
+     t2.print();
+        t3.print();
+return 0;}
+
+
+Ans 2)
+10,15
+10,15
+Ans 3)
+Ans 3)
+#include <iostream>
+using namespace std;
+class test {
+int l;
+int h;
+public:
+    test(int len,int he){
+    l=len;
+    h=he;}
+    test(const test &ref){
+    l=ref.l;
+    h=ref.h;}
+    void area(){
+    cout<<"the area is: "<<l*h<<endl;}
+};
+int main() {
+ test t1(10,20);
+ test t2=t1;
+ t1.area();
+ t2.area();
+return 0;}
+
+Ans 4)
+#include <iostream>
+using namespace std;
+class box;
+class test {
+int v;
+public:
+    test(int vol){
+    v=vol;}
+    friend void compare(test,box);
+};
+class box{
+int vol;
+public:
+    box(int v){
+    vol=v;}
+    friend void compare(test,box);
+    };
+    void compare(test t,box b){
+    if (t.v>b.vol){
+        cout<<"the bigger volume is test one :"<<t.v<<endl;
+
+    }
+    else{
+        cout<<"the bigger volume is box one :"<<b.vol<<endl;
+    }
+    }
+int main() {
+ test t1(10);
+ box b(20);
+ compare(t1,b);
+return 0;}
+
+
+Ans 5)
+Output-
+Length: 10.5, Height: 6.2
+In this code friend function is accessing the private data member ,friend function is a type of special function in this there is a class name wall having pvt members length and height in by using friend function it uses to print wall pvt mem outside the class.
