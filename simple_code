@@ -1,0 +1,21 @@
+Ans 5
+#include<iostream>
+#include<string>
+using namespace std;
+class rect{
+    int l;
+    int b;
+public:
+    void setdim(int len,int bre){
+    l=len;
+    b=bre;}
+    void getdata(){
+    cout<<"the area of rect is :"<<l*b<<endl;}
+};
+int main(){
+  rect r;
+  r.setdim(2,3);
+  r.getdata();
+
+return 0;
+}
