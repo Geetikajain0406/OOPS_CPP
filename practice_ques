@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+int main() {
+int * p;
+p=new int (200);
+float * f=new float(100);
+cout<<"the value of float is "<<*f<<endl;
+cout<<"the add for same is "<<f<<endl;
+cout<<"the value of int is "<<*p<<endl;
+cout<<"the add is "<<p<<endl;
+delete p;
+delete f;
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+int main() {
+    int n=3;
+int  p[3]={10,100,200};
+int * ptr=p;
+for(int i=0;i<n;i++){
+    cout<<"the addres iss["<<i<<"]"<<endl;
+    cout<<ptr<<endl;
+    ptr++;
+}
+    return 0;
+}
+
+
+
+#include <iostream>
+using namespace std;
+int main() {
+   const int n=3;
+int  p[3]={10,100,200};
+int * ptr=&p[n-1];
+for(int i=n;i>0;i--){
+        cout<<"the value iss["<<i<<"]"<<endl;
+    cout<<*ptr<<endl;
+    cout<<"the addres iss["<<i<<"]"<<endl;
+    cout<<ptr<<endl;
+    ptr--;
+}
+    return 0;
+}
