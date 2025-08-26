@@ -1,0 +1,36 @@
+#include <iostream>
+#include<cstring>
+#include<string>
+using namespace std;
+
+class test{
+  char * stud;
+    public:
+    test(const char *s){
+        stud=new char[strlen(s)+1];
+        strcpy(stud,s);
+    }
+   
+    test(test &ref){
+        stud=new char[strlen(ref.stud)+1];
+        strcpy(stud,ref.stud);
+    }
+    void setname(const char * s){
+        delete []stud;
+         stud=new char[strlen(s)+1];
+        strcpy(stud,s);
+    }
+    void display(){
+        cout<<stud<<endl;
+    }
+};
+
+int main() {
+  test t1("geet");
+  test t2=t1;
+  t1.display();
+  t2.display();
+  t2.setname("hey");
+   t2.display();
+    return 0;
+}
