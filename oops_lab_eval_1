@@ -1,0 +1,44 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class fulltime;
+    class parttime{
+    string name;
+    float salary;
+public:
+    parttime(string n,float sal){
+        name=n;
+        salary=sal;
+    }
+    friend void compare(parttime  &p,fulltime &f );
+    };
+        class fulltime{
+    string n;
+    float sal;
+public:
+    fulltime(string name,float salary){
+        n=name;
+        sal=salary;
+    }
+ friend void compare(parttime & p,fulltime &f );
+    };
+    void compare(parttime  &p,fulltime &f ){
+    if(p.salary>f.sal){
+        cout<<"the salary of parttime is more"<<p.salary<<endl;
+
+    }
+        else if(p.salary<f.sal){
+             cout<<"the salary of fulltime is more"<<f.sal<<endl;
+
+        }
+        else{
+            cout<<"the salary of both are same"<<endl;
+        }
+    }
+    int main(){
+        
+        parttime p("geetika",2000);
+        fulltime f("geet",3000);
+        compare(p,f);
+return 0;}
+
