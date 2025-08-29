@@ -1,0 +1,101 @@
+#include <iostream>
+using namespace std;
+
+class StudentMarks {
+    int *arr;     // dynamic array
+    int size;     // current size of array
+public:
+    StudentMarks(int n) {
+        size = n;
+        arr = new int[size];   // dynamic memory allocation
+        cout << "Enter " << size << " student marks:\n";
+        for (int i = 0; i < size; i++) {
+            cin >> arr[i];
+        }
+    }
+
+    // Function to display array
+    void display() {
+        cout << "Marks: ";
+        for (int i = 0; i < size; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+
+    // Insert element at given position
+    void insert(int pos, int value) {
+        if (pos < 0 || pos > size) {
+            cout << "Invalid position!\n";
+            return;
+        }
+
+        int *newArr = new int[size + 1]; // new array with extra space
+        for (int i = 0; i < pos; i++) {
+            newArr[i] = arr[i];
+        }
+        newArr[pos] = value;
+        for (int i = pos; i < size; i++) {
+            newArr[i + 1] = arr[i];
+        }
+
+        delete[] arr;   // free old memory
+        arr = newArr;   // point to new array
+        size++;         // increase size
+        cout << "Inserted " << value << " at position " << pos << endl;
+    }
+
+    // Delete element from given position
+    void remove(int pos) {
+        if (pos < 0 || pos >= size) {
+            cout << "Invalid position!\n";
+            return;
+        }
+
+        int *newArr = new int[size - 1];
+        for (int i = 0; i < pos; i++) {
+            newArr[i] = arr[i];
+        }
+        for (int i = pos + 1; i < size; i++) {
+            newArr[i - 1] = arr[i];
+        }
+
+        cout << "Deleted element: " << arr[pos] << endl;
+        delete[] arr;
+        arr = newArr;
+        size--;
+    }
+
+    ~StudentMarks() {
+        delete[] arr;   // free memory at the end
+    }
+};
+
+// Main function
+int main() {
+    int n;
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    StudentMarks sm(n);
+
+    cout << "\nOriginal Array:\n";
+    sm.display();
+
+    // Insertion
+    int pos, value;
+    cout << "\nEnter position to insert: ";
+    cin >> pos;
+    cout << "Enter value to insert: ";
+    cin >> value;
+    sm.insert(pos, value);
+    sm.display();
+
+    // Deletion
+    cout << "\nEnter position to delete: ";
+    cin >> pos;
+    sm.remove(pos);
+    sm.display();
+
+    return 0;
+}
