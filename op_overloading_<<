@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+class complex{
+    int id;
+    public:
+    complex(int i=0){
+        id=i;
+    }
+    bool operator ==(complex const &obj){
+        return id==obj.id;
+    }
+};
+int main() {
+complex c(101),e(102),f(102);
+if (e==f){
+    cout<<"same "<<endl;
+}
+else{
+    cout<<"different"<<endl;
+}
+if(c==f){
+     cout<<"same "<<endl;
+}
+else{
+    cout<<"different"<<endl;
+}
+
+    return 0;
+}
