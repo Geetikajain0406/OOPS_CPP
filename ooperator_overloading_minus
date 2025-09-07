@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+class complex{
+    int x,y,z;
+    public:
+    complex(int a,int b,int c){
+        x=a;
+        y=b;
+        z=c;
+    }
+    void show(){
+        cout<<x<<y<<z<<endl;
+    }
+    void operator -(){
+        x=-x;
+        y=-y;
+        z=-z;
+    }
+};
+int main() {
+complex c(2,3,4);
+c.show();
+-c;
+c.show();
+    return 0;
+}
