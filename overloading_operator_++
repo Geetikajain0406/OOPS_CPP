@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+class complex{
+   int i;
+  public:
+  complex(int a=0){
+      i=a;
+  }
+  complex operator ++(){
+        complex  temp;
+      ++i;
+      temp.i=i;
+      return temp;
+  }
+  void show(){
+      cout<<"the value is"<<i<<endl;
+  }
+};
+int main() {
+complex c(0);
+complex b(0);
+c.show();
+b.show();
+b=++c;
+b.show();
+c.show();
+    return 0;
+}
