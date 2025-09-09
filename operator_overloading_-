@@ -1,0 +1,69 @@
+class space
+
+{
+
+int x;
+
+int y;
+
+int z;
+
+public:
+
+space()
+
+{
+
+x=y=z=0;
+
+}
+
+space(int a, int b. int c)
+
+{
+
+x=a;
+
+y=b;
+
+z=c;
+
+}
+
+void show()
+
+{
+
+cout<<"x= "<<x<<" y= "<<y<<" z= "<<z;
+
+}
+
+void operator-()
+
+{
+
+x=-x;
+
+y=-y;
+
+z=-z;
+
+}
+
+} ;
+
+void main()
+
+{
+
+space s(3,-4,5);
+
+s.show();
+
+-s; // equivalent to s.operator-();
+
+//s2=-s will not work because no value is returned
+
+s.show();
+
+}
