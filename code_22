@@ -1,0 +1,103 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, pos, value, choice;
+
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    // Dynamic memory allocation
+    int *marks = new int[n];
+
+    cout << "Enter marks of students: ";
+    for (int i = 0; i < n; i++) {
+        cin >> marks[i];
+    }
+
+    cout << "\nInitial Marks: ";
+    for (int i = 0; i < n; i++) {
+        cout << marks[i] << " ";
+    }
+    cout << endl;
+
+    // Menu
+    cout << "\nChoose Operation:\n1. Insert\n2. Delete\nEnter choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        // INSERTION
+        cout << "Enter position to insert (0 to " << n << "): ";
+        cin >> pos;
+        cout << "Enter value to insert: ";
+        cin >> value;
+
+        // Create new array of size n+1
+        int *newArr = new int[n + 1];
+
+        // Copy elements before pos
+        for (int i = 0; i < pos; i++) {
+            newArr[i] = marks[i];
+        }
+
+        // Insert new value
+        newArr[pos] = value;
+
+        // Copy remaining elements
+        for (int i = pos; i < n; i++) {
+            newArr[i + 1] = marks[i];
+        }
+
+        // Free old memory
+        delete[] marks;
+
+        // Point marks to newArr
+        marks = newArr;
+        n++;
+
+        cout << "\nArray after insertion: ";
+        for (int i = 0; i < n; i++) {
+            cout << marks[i] << " ";
+        }
+        cout << endl;
+    }
+    else if (choice == 2) {
+        // DELETION
+        cout << "Enter position to delete (0 to " << n - 1 << "): ";
+        cin >> pos;
+
+        if (pos < 0 || pos >= n) {
+            cout << "Invalid position!" << endl;
+        } else {
+            // Create new array of size n-1
+            int *newArr = new int[n - 1];
+
+            // Copy elements except the one at pos
+            for (int i = 0, j = 0; i < n; i++) {
+                if (i == pos) continue; // skip pos
+                newArr[j++] = marks[i];
+            }
+
+            // Free old memory
+            delete[] marks;
+
+            // Point marks to newArr
+            marks = newArr;
+            n--;
+
+            cout << "\nArray after deletion: ";
+            for (int i = 0; i < n; i++) {
+                cout << marks[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+    else {
+        cout << "Invalid choice!" << endl;
+    }
+
+    // Free final memory
+    delete[] marks;
+
+    return 0;
+}
