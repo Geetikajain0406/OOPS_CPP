@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+//single inheritance
+class dog{
+        public:
+        dog(){
+            cout<<"hello here base parent"<<endl;
+        }
+        void display(){
+            cout<<"dog"<<endl;
+        }
+    };
+    class animal:public dog{
+        
+        public:
+        animal(){
+            cout<<"the child class "<<endl;
+        }
+        void dis(){
+            cout<<"animal"<<endl;
+        }
+    };
+
+int main() {
+    animal b;
+    b.display();
+    b.dis();
+    return 0;
+}
