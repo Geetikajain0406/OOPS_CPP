@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+//multiple inheritance
+class dog{
+        public:
+        dog(){
+            cout<<"hello here 1 st parent"<<endl;
+        }
+        void display(){
+            cout<<"dog"<<endl;
+        }
+    };
+    class bear{
+        public:
+        bear(){
+            cout<<"hello bear this side 2nd parent"<<endl;
+        }
+        void d(){
+            cout<<"bear"<<endl;
+        }
+    };
+    class animal:public dog,public bear{
+        
+        public:
+        animal(){
+            cout<<"the child class "<<endl;
+        }
+        void dis(){
+            cout<<"animal"<<endl;
+        }
+    };
+
+int main() {
+    animal b;
+    b.display();
+    b.dis();
+    b.d();
+    return 0;
+}
