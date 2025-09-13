@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+//hybrid inheritance
+class a{
+    public:
+    a(){
+        cout<<"hi parent a"<<endl;
+    }
+    
+};
+class b:public a{
+    public:
+     b(){
+        cout<<"hi parent of  d and child of a(b)"<<endl;
+    }
+};
+class c:public a{
+    public:
+     c(){
+        cout<<"hi parent of d and child of a (c)"<<endl;
+    }
+};
+class d:public b,public c{
+    public:
+     d(){
+        cout<<"hi child of b and c"<<endl;
+    }
+};
+int main() {
+    d de;
+
+    return 0;
+}
