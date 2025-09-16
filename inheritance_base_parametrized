@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+class base{
+    int y;
+    public:
+    base(){
+        cout<<"base constructor is called"<<endl;
+    }
+    base(int b){
+      y=b;
+      cout<<"base parametrized constructor is called"<<y<<endl;
+    }
+    
+};
+class derived:public base{
+    int a;
+    public:
+    derived(int x,int y):base(x){
+        a=y;
+ cout<<"derived parametrized constructor is called"<<a<<endl;
+    }
+   derived(){
+       cout<<"derived constructor is called"<<endl;
+   }
+    
+};
+int main() {
+    derived d;
+    derived r(4,8);
+    return 0;
+}
