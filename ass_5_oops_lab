@@ -1,0 +1,149 @@
+Ans 1
+Hey Guys, I am a teacher
+I am a Math Teacher
+"Negan";
+"Beginnersbook";
+"Math"
+Abs  
+
+
+Ans 2
+#include<iostream>
+using namespace std;
+class media{
+   string title;
+   float price;
+   public:
+       void putdata(){
+
+           cout<<"enter title for media"<<endl;
+        getline(cin,title);
+        cout<<"the price :"<<endl;
+        cin>>price;
+        cin.ignore();
+       }
+       void getdata(){
+       cout<<"the media have the data of"<<title<<"the price is"<<
+       price<<endl;}
+
+};
+class ebook:public media{
+float mb;
+int ch;
+public:
+    void putdata(){
+        media::putdata();
+       cout<<"enter mb for ebook"<<endl;
+        cin>>mb;
+        cout<<"enters chapters :"<<endl;
+        cin>>ch;
+
+    }
+ void getdata(){
+        media::getdata();
+       cout<<"the ebook have the data of"<<mb<<"the chapters "<<
+       ch<<endl;}
+
+};
+class vdo:public media{
+      float m;
+   string qual;
+   public:
+       void putdata(){
+              media::putdata();
+            cout<<"enter quality for vedio"<<endl;
+        getline(cin,qual);
+        cout<<"enter minutes :"<<endl;
+        cin>>m;
+        cin.ignore();
+       }
+       void getdata(){
+              media::getdata();
+       cout<<"the vdo have the data of"<<m<<"the quality is"<<
+       qual<<endl;}
+
+};
+int main(){
+ebook b;
+b.putdata();
+b.getdata();
+vdo v;
+v.putdata();
+v.getdata();
+return 0;}
+
+
+Ans 3
+#include<iostream>
+using namespace std;
+class person{
+    string name;
+    int age;
+public:
+   void getdata(){
+    cout<<"enter name of person"<<endl;
+    getline(cin,name);
+    cout<<"enter age:"<<endl;
+    cin>>age;
+    cin.ignore();
+    }
+    void display(){
+        cout<<"the person name is :"<<name<<endl;
+        cout<<"the person age is :"<<age<<endl;
+    }
+};
+class dept{
+    string dname;
+    int dcode;
+    public:
+   void getdata(){
+         person::getdata();
+    cout<<"enter  department name "<<endl;
+    getline(cin,dname);
+    cout<<"enter department code:"<<endl;
+    cin>>dcode;
+    cin.ignore();
+    }
+    void display(){
+          person::display();
+        cout<<"the dept name is :"<<dname<<endl;
+        cout<<"the dept code is :"<<dcode<<endl;
+    }
+};
+class proff{
+    string sub;
+    int pub;
+    public:
+   void getdata(){
+       person::getdata();
+    cout<<"enter name of subject"<<endl;
+    getline(cin,sub);
+    cout<<"enter publications :"<<endl;
+    cin>>pub;
+    cin.ignore();
+    }
+    void display(){
+        person::display();
+        cout<<"the subject  is :"<<sub<<endl;
+        cout<<"the publication  :"<<pub<<endl;
+    }
+};
+int main()
+{
+    dept d;
+    d.getdata();
+    d.display();
+    proff p;
+     p.getdata();
+    p.display();
+return 0;
+}
+
+
+Ans 5
+As 4*int type of 10
+=40
+4*1=4
+40+4=44
+48+48
+=96
