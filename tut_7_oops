@@ -1,0 +1,165 @@
+Ans 1
+Yes we can pass parameters to base class constructor though derived class or derived
+class constructor.
+Code-
+#include <iostream>
+using namespace std;
+class base{
+    int y;
+    public:
+    base(){
+        cout<<"base constructor is called"<<endl;
+    }
+    base(int b){
+      y=b;
+      cout<<"base parametrized constructor is called"<<y<<endl;
+    }
+    
+};
+class derived:public base{
+    int a;
+    public:
+    derived(int x,int y):base(x){
+        a=y;
+ cout<<"derived parametrized constructor is called"<<a<<endl;
+    }
+   derived(){
+       cout<<"derived constructor is called"<<endl;
+   }
+    
+};
+int main() {
+    derived d;
+    derived r(4,8);
+    return 0;
+}
+Ans 2
+Base 1
+Base 2
+Derived
+
+ Ans 3
+#include <iostream>
+using namespace std;
+class base{
+    int age;
+    string name;
+    public:
+    base(){
+        cout<<"base constructor is called"<<endl;
+    }
+    base(int b,string n){
+     age=b;
+     name=n;
+      cout<<"base parametrized constructor is called "<<age<<","<<name<<endl;
+    }
+    
+};
+class derived:public base{
+    
+    int marks;
+    public:
+    derived(int x,int y,string na):base(y,na){
+        marks=x;
+ cout<<"derived parametrized constructor is called "<<marks<<endl;
+    }
+   derived(){
+       cout<<"derived constructor is called"<<endl;
+   }
+    
+};
+int main() {
+    derived d;
+    derived r(2,4,"geet");
+    return 0;
+}
+Ans 4
+ Benefits:
+1.Flexibility: new course types can be added easily.
+2.Scalability: shared code in base class avoids duplication.
+Doubt
+Ans5
+Advantages:
+1.Reusability of code.
+2.Clear modeling of relationships.
+
+
+ Challenges:
+1.Multiple inheritance ,ambiguity (diamond problem). Need virtual inheritance.
+2.Too much inheritance makes the system complex; sometimes composition better.
+Ans 6
+Compile time error as a and y are from base class not from derived class….
+Ans 7
+#include <iostream>
+#include<string.h>
+using namespace std;
+class romantic{
+    string rname;
+    string sname;
+    int price;
+    public:
+    romantic(string n,string s,int p){
+        rname=n;
+        sname=s;
+        price=p;
+          cout<<"the romantic parametrized constructor is called"<<endl;
+    }
+     
+    friend void displaygifts(const romantic &obj);
+};
+void displaygifts(const romantic &obj){
+    
+        cout<<"the romantic season is on :"<<obj.rname<<"the sender name is "<<obj.sname<<"the price is "<<obj.price<<endl;
+       
+    }
+class flwr:public romantic{
+    string type;
+    string clr;
+    public:
+    flwr(string n,string s,int p,string t,string c):romantic(n,s,p){
+        type=t;
+        clr=c;
+        cout<<"the flower parametrized constructor is called"<<endl;
+    }
+     void display(){
+        cout<<"the flower is :"<<type<<"the color is: :"<<clr<<endl;
+    }
+};
+class chocolate:public romantic{
+  
+    string type;
+    int qty;
+    public:
+    chocolate(string n,string s,int p,string t,int q):romantic(n,s,p){
+        type=t;
+        qty=q;
+         cout<<"the chocolate parametrized constructor is called"<<endl;
+    }
+     void display(){
+        cout<<"the chocolate is: "<<type<<"the qty is "<<qty<<endl;
+    }
+};
+class letter:public romantic{
+    string message;
+    public:
+    letter(string n,string s,int p,string m):romantic(n,s,p){
+        message=m;
+         cout<<"the letter parametrized constructor is called"<<endl;
+    }
+    void display(){
+        cout<<"the message of love letter is:"<<message<<endl;
+    }
+};
+int main() {
+    flwr f("geet","geetika",120000,"sunflower","yellow");
+    f.display();
+    displaygifts(f);
+    letter l("geet","geetika",120000,"hellloooooooooo");
+    l.display();
+    displaygifts(l);
+    chocolate c("geet","geetika",120000,"ferraro",6);
+     c.display();
+    displaygifts(c);
+    return 0;
+}
+Ans 8
