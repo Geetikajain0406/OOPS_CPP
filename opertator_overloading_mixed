@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+class comp{
+    int x,y;
+    public:
+    comp(){
+        
+    }
+    comp(int a,int b){
+        x=a;
+        y=b;
+    }
+friend bool operator ==(comp &c,comp &d);
+    void display(){
+        cout<<"the x and y values are"<<x<<y<<endl;
+    }
+};
+bool operator ==(comp &c,comp &d){
+   if(c.x==d.x && c.y==d.y){
+       return true;
+   }
+   else{
+       return false;
+   }
+    }
+int main() {
+    comp a(2,3);
+    comp b(2,3);
+  bool ans=a==b;
+    if(!ans){
+        cout<<"not equal"<<endl;
+    }
+    else{
+        cout<<"equal"<<endl;
+    }
+    return 0;
+}
+
+
+
+#include <iostream>
+using namespace std;
+class comp{
+    int x,y;
+    public:
+    comp(){
+        
+    }
+    comp(int a,int b){
+        x=a;
+        y=b;
+    }
+friend bool operator <(comp &c,comp &d);
+    void display(){
+        cout<<"the x and y values are"<<x<<y<<endl;
+    }
+};
+bool operator <(comp &c,comp &d){
+ return (c.x < d.x && c.y < d.y);
+}
+int main() {
+    comp a(2,3);
+    comp b(5,8);
+  bool ans=a<b;
+    if(ans){
+        cout<<"a is smaller"<<endl;
+    }
+    else{
+        cout<<"b is smaller"<<endl;
+    }
+    return 0;
+}
