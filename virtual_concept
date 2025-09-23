@@ -1,0 +1,111 @@
+Ans 4
+#include <iostream>
+using namespace std;
+class person {
+    protected:
+    int age;
+    string n;
+    public:
+    person(){
+        
+    }
+    person(int a,string na){
+        age=a;
+        n=na;
+    }
+    void getdata(){
+        cout<<"enter age"<<endl;
+        cin>>age;
+        cout<<"enter name"<<endl;
+        cin>>n;
+    }
+    void display(){
+        cout<<"your age :"<<age<<endl;
+        cout<<"your name :"<<n<<endl;
+    }
+};
+class student:virtual public person{
+    protected:
+    int m;
+    int sid;
+    public:
+    student(){
+        
+    }
+    student(int ma,int si){
+        m=ma;
+        sid=si;
+    }
+    void getdata(){
+        person::getdata();
+        cout<<"enter marks"<<endl;
+        cin>>m;
+        cout<<"enter enrollment"<<endl;
+        cin>>sid;
+    }
+    void display(){
+        person::display();
+        cout<<"your marks :"<<m<<endl;
+        cout<<"your enrollment :"<<sid<<endl;
+    }
+    
+};
+class emp:virtual public person{
+    protected:
+   int eid;
+   string sub;
+   public:
+   emp(){
+       
+   }
+   emp(int e,string s){
+       eid=e;
+       sub=s;
+   }
+    void getdata(){
+        person::getdata();
+        cout<<"enter eid"<<endl;
+        cin>>eid;
+        cout<<"enter subject"<<endl;
+        cin>>sub;
+    }
+    void display(){
+        person::display();
+        cout<<"your enrolment :"<<eid<<endl;
+        cout<<"your subject:"<<sub<<endl;
+    }
+};
+class teaching:public student,public emp{
+    public:
+    teaching(){
+        
+    }
+     void getdata() {
+        
+        cout << "Enter Teaching Assistant details:" << endl;
+        person::getdata();   // common data
+        cout << "Enter roll number: ";
+        cin >> sid;
+        cout << "Enter marks: ";
+        cin >> m;
+        cout << "Enter Employee ID: ";
+        cin >> eid;
+        cout << "Enter Subject: ";
+        cin >> sub;
+    }
+    void display() {
+        cout << "\n--- Teaching Assistant Details ---\n";
+    person::display();
+        cout << "Roll Number: " << sid << endl;
+        cout << "Marks: " << m << endl;
+        cout << "Employee ID: " << eid << endl;
+        cout << "Subject: " << sub << endl;
+    }
+   
+};
+int main() {
+  teaching t;
+  t.getdata();
+  t.display();
+    return 0;
+}
