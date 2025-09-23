@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+class comp{
+    int x,y;
+    public:
+    comp(){
+        
+    }
+    comp(int a,int b){
+        x=a;
+        y=b;
+    }
+bool operator ==(comp &c){
+   if(c.x==x && c.y==y){
+       return true;
+   }
+   else{
+       return false;
+   }
+    }
+    void display(){
+        cout<<"the x and y values are"<<x<<y<<endl;
+    }
+};
+int main() {
+    comp a(2,3);
+    comp b(2,3);
+  bool ans=a==b;
+    if(!ans){
+        cout<<"not equal"<<endl;
+    }
+    else{
+        cout<<"equal"<<endl;
+    }
+    return 0;
+}
