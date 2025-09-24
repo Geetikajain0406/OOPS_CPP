@@ -1,0 +1,87 @@
+ANS 1
+#include<iostream>
+using namespace std;
+class base{
+    protected:
+    int l,b;
+public:
+    base(){}
+    base(int c,int d){
+        l=c;
+        b=d;
+    }
+    void set(){
+        cout<<"enter len:"<<endl;
+        cin>>l;
+        cout<<"enter b"<<endl;
+        cin>>b;}
+
+};
+class rect:public base{
+
+public:
+    rect(){}
+rect(int c,int d):base(c,d){
+
+}
+    void area(){
+        //base::set();
+    cout<<"the area of rect is:"<<l*b<<endl;}
+};
+class tri:public base{
+
+public:
+    tri(){}
+    tri(int c,int d):base(c,d){
+    }
+    void area(){
+        float a=0.5*l*b;
+    cout<<"the area of triangle is:"<<a<<endl;}
+};
+int main(){
+    rect r(10,2);
+    r.area();
+    tri t(4,10);
+    t.area();
+return 0;}
+
+ANS 2
+#include<iostream>
+using namespace std;
+class box{
+    int l,w,h;
+public:
+    box(){}
+    box(int a,int b,int c){
+    l=a;
+    w=b;
+    h=c;}
+
+
+
+  bool operator >(box &c){
+      int v=c.l*c.w*c.h;
+      int vol=l*h*w;
+    if(vol>v){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+};
+
+int main(){
+    box a(1,2,3);
+    box b(4,5,6);
+
+    bool ans=a> b;
+    if(ans){
+        cout<<"the a is bigger"<<endl;
+    }
+    else{
+        cout<<"the b is bigger"<<endl;
+    }
+    return 0;
+}
