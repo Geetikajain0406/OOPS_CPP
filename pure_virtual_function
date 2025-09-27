@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+class a{
+public:
+virtual void area()=0;
+  
+};
+class b: public a{
+    int l,c;
+   public:
+   b(int z,int y){
+       l=z;
+       c=y;
+   }
+    void area() override{
+       cout<<"the area is"<<l*c<<endl;
+   }
+};
+
+
+int main() {
+  b b1(10,20);
+  a *a1;
+  a1=&b1;
+  a1->area();
+
+    return 0;
+}
