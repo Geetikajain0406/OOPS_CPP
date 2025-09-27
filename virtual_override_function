@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+class a{
+   int x;
+   public:
+   virtual void show(){
+       cout<<"a class"<<endl;
+   }
+};
+class b: public a{
+   public:
+    void show() override{
+       cout<<"b class"<<endl;
+   }
+};
+
+
+int main() {
+  b b1;
+  a *a1;
+  a1=&b1;
+  a1->show();
+
+    return 0;
+}
