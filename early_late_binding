@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+#include <iostream>
+using namespace std;
+class base_food_items {
+public:
+char item_name[20];
+int quantity;
+int item_price;
+public:
+virtual void order()
+{
+cout<< "enter item name:";
+cin>>item_name;
+cout<< "enter quantity";
+cin>> quantity;
+cout<< "Item price";
+cin>>item_price;
+}
+void total_price()
+{
+cout<<"order is: " <<item_name<<"\t"<<"quantity:"<<quantity<<endl; cout<< "total price="
+<<item_price*quantity<<endl; }
+};
+class derived:public base_food_items{
+public:
+    void order()
+{
+cout<< "enter item name for derived class:";
+cin>>item_name;
+cout<< "enter quantity for derived class";
+cin>> quantity;
+cout<< "Item price for derived class";
+cin>>item_price;
+}
+void total_price()
+{
+cout<<"order is: " <<item_name<<"\t"<<"quantity:"<<quantity<<endl; cout<< "total price="
+<<item_price*quantity<<endl; }
+};
+int main()
+{
+base_food_items *b;
+derived d;
+b=&d;
+b->order();//late binding the fn will be of derived as virtual is written
+b->total_price();//early  binding the fn will be of base class as virtual is not written
+}
+
