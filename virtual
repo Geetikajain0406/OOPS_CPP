@@ -1,0 +1,127 @@
+class a
+
+{
+
+int x;
+
+public:
+
+a()
+
+{
+
+cout<<"\n a()";
+
+}
+
+a(int t)
+
+{
+
+cout<<"\n a(int)";
+
+}
+
+};
+
+class b : public a
+
+{
+
+int y;
+
+public:
+
+b()
+
+{
+
+cout<<"\n b()";
+
+}
+
+b(int t)
+
+{
+
+cout<<"\n b(int)";
+
+}
+
+};
+
+class c: public virtual a
+
+{
+
+int z;
+
+public:
+
+c()
+
+{
+
+cout<<"\n c()";
+
+}
+
+c(int t)
+
+{
+
+cout<<"\n c(int)";
+
+}
+
+};
+
+class d : public b, public c
+
+{
+
+int u;
+
+public:
+
+d()
+
+{
+
+cout<<"\n d()";
+
+}
+
+d(int t)
+
+{
+
+cout<<"\n d(int)";
+
+}
+
+};
+
+int main()
+
+{
+
+d obj;
+
+return 0;
+
+}
+
+OUTPUT:
+
+a()
+
+a()
+
+b()
+
+c()
+
+d()
+
+Example
