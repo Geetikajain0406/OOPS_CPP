@@ -1,0 +1,26 @@
+#include <iostream>
+#include <typeinfo>
+using namespace std;
+
+class animal {
+public:
+    virtual void sound() { cout << "Animal sound\n"; }
+};
+
+class dog : public animal {
+public:
+    void sound() { cout << "Dog barks\n"; }
+};
+
+int main() {
+   animal *a = new dog();
+   cout<<"the type is :"<<typeid(* a).name()<<endl;
+   dog *d=dynamic_cast<dog *>(a);
+   if(d){
+       cout<<"cast sucessfull ,its a dog"<<endl;
+   }
+   else{
+       cout<<"not done"<<endl;
+   }
+   return 0;
+}
