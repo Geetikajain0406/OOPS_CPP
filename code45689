@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+class base{
+protected:
+    int a,b;
+     public:
+base(int x,int y){
+a=x;
+b=y;}
+
+virtual void sum()=0;};
+class derived:public base{
+    public:
+        derived(int x,int y):base(x,y){}
+
+void sum(){
+    cout<<"the sum of a and b are:"<<a+b<<endl;
+}
+};
+
+int main()
+{
+base* b = new derived(10,20);
+b->sum();
+
+delete b;
+return 0;
+}
