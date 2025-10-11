@@ -1,0 +1,27 @@
+#include <iostream>
+ using namespace std;
+
+class base{
+    public:
+    virtual void show(){
+        cout<<"hello"<<endl;
+    }
+};
+class der:public base{
+    public:
+   void show(){
+        cout<<"hello"<<endl;
+    }
+};
+int main() {
+ base *b=new der();
+ cout<<"the type is "<< typeid(*b).name() <<endl;
+ der *d=dynamic_cast<der *>(b);
+ if(d != NULL){
+     cout<<"succes it is working"<<endl;
+ }
+ else{
+     cout<<"sorrry it is not!"<<endl;
+ }
+    return 0;
+}
