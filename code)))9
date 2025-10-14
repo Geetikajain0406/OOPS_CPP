@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+class Animal {
+protected:
+    string name;
+public:
+    Animal(string n):name(n){}
+};
+
+class Dog : public Animal {
+public:
+    Dog(string n):Animal(n){}
+    void speak(){ cout<<name<<" says: Woof\n"; } // can access protected
+};
+
+int main(){
+    Dog d("Buddy");
+    d.speak();
+}
