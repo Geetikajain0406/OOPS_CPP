@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+// 🔹 Base class
+class RomanticGift {
+protected:
+    string sender, recipient;
+    float price;
+public:
+    RomanticGift(string s, string r, float p) {
+        sender = s;
+        recipient = r;
+        price = p;
+    }
+    virtual void displayDetails() {
+        cout << "Sender: " << sender << ", Recipient: " << recipient << ", Price: " << price << endl;
+    }
+    friend void printGiftDetails(RomanticGift &g);
+};
+
+// 🔹 Derived class 1
+class Flower : public RomanticGift {
+    string flowerType, color, style;
+public:
+    Flower(string s, string r, float p, string f, string c, string st)
+        : RomanticGift(s, r, p), flowerType(f), color(c), style(st) {}
+    void displayDetails() override {
+        cout << "\n🌸 Flower Gift 🌸\n";
+        cout << "Type: " << flowerType << ", Color: " << color << ", Style: " << style << endl;
+    }
+    friend void printGiftDetails(RomanticGift &g);
+};
+
+// 🔹 Derived class 2
+class ChocolateBox : public RomanticGift {
+    string chocType, flavor;
+    int quantity;
+public:
+    ChocolateBox(string s, string r, float p, string t, string f, int q)
+        : RomanticGift(s, r, p), chocType(t), flavor(f), quantity(q) {}
+    void displayDetails() override {
+        cout << "\n🍫 Chocolate Gift 🍫\n";
+        cout << "Type: " << chocType << ", Flavor: " << flavor << ", Quantity: " << quantity << endl;
+    }
+    friend void printGiftDetails(RomanticGift &g);
+};
+
+// 🔹 Derived class 3
+class LoveLetter : public RomanticGift {
+    string message, style;
+public:
+    LoveLetter(string s, string r, float p, string m, string st)
+        : RomanticGift(s, r, p), message(m), style(st) {}
+    void displayDetails() override {
+        cout << "\n💌 Love Letter 💌\n";
+        cout << "Message: " << message << ", Style: " << style << endl;
+    }
+    friend void printGiftDetails(RomanticGift &g);
+};
+
+// 🔹 Friend function
+void printGiftDetails(RomanticGift &g) {
+    g.displayDetails();
+    cout << "(Accessed using friend function)\n";
+}
+
+int main() {
+    Flower f("Amit", "Riya", 500, "Rose", "Red", "Bouquet");
+    ChocolateBox c("Rahul", "Anjali", 750, "Dark", "Hazelnut", 12);
+    LoveLetter l("Sia", "Karan", 300, "You mean the world to me", "Handwritten");
+
+    f.displayDetails();
+    c.displayDetails();
+    l.displayDetails();
+
+    cout << "\nUsing Friend Function:\n";
+    printGiftDetails(f);
+    printGiftDetails(c);
+    printGiftDetails(l);
+    return 0;
+}
