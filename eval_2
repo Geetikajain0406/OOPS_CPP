@@ -1,0 +1,67 @@
+#include<iostream>
+using namespace std;
+class financialreport{
+    int rid;
+    double rdate;
+    public:
+
+financialreport(double r,int id){
+
+   rid=id;
+   rdate=r;
+    }
+    void getdata(){
+        cout<<"the data of financial report"<<endl;
+        cout<<rdate<<endl;
+        cout<<rid<<endl;
+    }
+    virtual void generatereport()=0;
+};
+class balancesheet:public financialreport{
+    int tassets;
+    int tlib;
+     public:
+   balancesheet(double r,int id,int tas,int tli):financialreport(r,id){
+        tassets=tas;
+        tlib=tli;
+    }
+
+    void generatereport()  override{
+         financialreport::getdata();
+    cout<<"the total assets are :"<<tassets<<endl;
+    cout<<"the total libalities are :"<<tlib<<endl;
+    cout<<"the total is:"<<tassets-tlib<<endl;
+    }
+};
+class incomestatement:public financialreport{
+    double trevenue;
+    double texpense;
+    public:
+        incomestatement(double r,int id,double exp,double revenue):financialreport(r,id){
+              trevenue=revenue;
+              texpense=exp;
+        }
+     void generatereport() override{
+          financialreport::getdata();
+    cout<<"the total revenue are :"<<trevenue<<endl;
+    cout<<"the total expense are :"<<texpense<<endl;
+    cout<<"the total income is:"<<trevenue-texpense<<endl;
+    }
+};
+int main(){
+    financialreport *f3;
+balancesheet b1(12,123,2300,300);
+f3=&b1;
+f3->generatereport();
+    financialreport *f1;
+     incomestatement w(12,123,2300,4500);
+     f1=&w;
+     f1->generatereport();
+     //dynamic dispatch
+    //financialreport *f=new balancesheet(12,123,2300,300);
+    //f->generatereport();
+    //financialreport *f1=new incomestatement(12,123,2300,4500);
+    //f1->generatereport();
+return 0;}
+
+
