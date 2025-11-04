@@ -1,0 +1,347 @@
+Bahut badiya 👏 — tu bilkul sahi direction me padh rahi hai!
+Ab hum step-by-step **OOPs me relationships (class relationships)** samjhenge **UML ke hisaab se**, aur **C++ code examples ke saath** dekhenge ki kaise identify karte hain ki **kaunsa relationship kis type ka hai** (Association, Aggregation, Composition, Inheritance, Dependency).
+Main har ek relationship ka concept, diagram idea, code, aur explanation **detail me Hinglish me** bata raha hoon 👇
+
+---
+
+## 🌸 1. **Association (uses-a relationship)**
+
+### 🔹 Concept:
+
+Association ka matlab hota hai **“ek class dusri class ka object use karti hai”**, lekin dono **independent** hote hain.
+Yani agar ek class delete ho jaaye, dusri class fir bhi exist karti hai.
+
+**Example:**
+Ek `Teacher` ek `Department` me kaam karta hai — dono alag entities hain.
+
+### 🔹 UML Diagram (Text Style)
+
+```
+Teacher  ———  Department
+ (uses-a)
+```
+
+### 🔹 Code:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Department {
+public:
+    string deptName;
+    Department(string name) {
+        deptName = name;
+    }
+};
+
+class Teacher {
+public:
+    string teacherName;
+    Teacher(string name) {
+        teacherName = name;
+    }
+
+    void showDepartment(Department &d) {
+        cout << teacherName << " works in " << d.deptName << " department." << endl;
+    }
+};
+
+int main() {
+    Department d("Computer Science");
+    Teacher t("Geetika");
+    t.showDepartment(d);
+    return 0;
+}
+```
+
+### 🔹 Output:
+
+```
+Geetika works in Computer Science department.
+```
+
+### 🔹 Explanation:
+
+Yahan `Teacher` class **use kar rahi hai** `Department` class ka object — that’s **Association**.
+Dono alag-alag exist kar sakte hain.
+
+---
+
+## 🌼 2. **Aggregation (has-a relationship)**
+
+### 🔹 Concept:
+
+Aggregation ek **"whole-part"** relation hota hai, jisme part independent hota hai.
+Yani agar “whole” class destroy ho jaaye, toh “part” fir bhi exist kar sakta hai.
+Yeh **weak relationship** hota hai.
+
+**Example:**
+Ek `Library` ke paas multiple `Books` hote hain — agar library band ho jaaye, books fir bhi exist karti hain.
+
+### 🔹 UML Diagram
+
+```
+Library ◊—— Book
+```
+
+### 🔹 Code:
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Book {
+public:
+    string title;
+    Book(string t) { title = t; }
+};
+
+class Library {
+public:
+    string name;
+    vector<Book*> books;  // aggregation (pointer to book)
+
+    Library(string n) { name = n; }
+
+    void addBook(Book* b) {
+        books.push_back(b);
+    }
+
+    void showBooks() {
+        cout << name << " Library has:" << endl;
+        for (auto b : books)
+            cout << "- " << b->title << endl;
+    }
+};
+
+int main() {
+    Book b1("C++ Basics");
+    Book b2("Data Structures");
+    Library l("Central");
+
+    l.addBook(&b1);
+    l.addBook(&b2);
+    l.showBooks();
+    return 0;
+}
+```
+
+### 🔹 Output:
+
+```
+Central Library has:
+- C++ Basics
+- Data Structures
+```
+
+### 🔹 Explanation:
+
+Yahan `Library` **has-a** `Book`, but agar library delete ho gayi toh books alag se exist kar sakti hain.
+Yeh **Aggregation** ka example hai.
+
+---
+
+## 🌻 3. **Composition (strong has-a relationship)**
+
+### 🔹 Concept:
+
+Composition bhi **“has-a”** relationship hai, lekin yeh **strong** version hota hai.
+Agar “whole” destroy ho gaya, toh “part” bhi destroy ho jaata hai.
+
+**Example:**
+Ek `House` ke andar `Room` hote hain — agar house destroy ho gaya, toh rooms bhi khatam.
+
+### 🔹 UML Diagram
+
+```
+House ◆—— Room
+```
+
+### 🔹 Code:
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Room {
+public:
+    string roomName;
+    Room(string name) { roomName = name; }
+};
+
+class House {
+private:
+    vector<Room> rooms; // composition: direct object
+public:
+    void addRoom(string name) {
+        rooms.push_back(Room(name));
+    }
+
+    void showRooms() {
+        cout << "House has:" << endl;
+        for (auto &r : rooms)
+            cout << "- " << r.roomName << endl;
+    }
+};
+
+int main() {
+    House h;
+    h.addRoom("Bedroom");
+    h.addRoom("Kitchen");
+    h.showRooms();
+    return 0;
+}
+```
+
+### 🔹 Output:
+
+```
+House has:
+- Bedroom
+- Kitchen
+```
+
+### 🔹 Explanation:
+
+`House` ke andar `Room` objects directly exist karte hain.
+Agar house delete ho jaaye, toh rooms bhi khatam — that’s **Composition**.
+
+---
+
+## 🌷 4. **Inheritance (is-a relationship)**
+
+### 🔹 Concept:
+
+Inheritance me ek class dusri class ke properties aur methods **inherit (use)** karti hai.
+Yeh **“is-a”** relationship hota hai.
+
+**Example:**
+`Student` is a `Person`
+
+### 🔹 UML Diagram:
+
+```
+Person ▲
+       |
+       |
+    Student
+```
+
+### 🔹 Code:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Person {
+public:
+    string name;
+    int age;
+    void show() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+class Student : public Person {
+public:
+    int rollNo;
+    void display() {
+        cout << "Roll No: " << rollNo << endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.name = "Geetika";
+    s.age = 20;
+    s.rollNo = 101;
+    s.show();
+    s.display();
+    return 0;
+}
+```
+
+### 🔹 Output:
+
+```
+Name: Geetika, Age: 20
+Roll No: 101
+```
+
+### 🔹 Explanation:
+
+`Student` ne `Person` se inherit kiya — that’s **Inheritance** (Student **is-a** Person).
+
+---
+
+## 🌼 5. **Dependency (temporary use relationship)**
+
+### 🔹 Concept:
+
+Dependency ek **temporary relationship** hai — ek class sirf **dusri class ke function me use hoti hai**, permanent relation nahi hota.
+
+**Example:**
+`Printer` depends on `Document` (temporarily, jab print karna ho).
+
+### 🔹 UML Diagram:
+
+```
+Printer - - - > Document
+```
+
+### 🔹 Code:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Document {
+public:
+    string content;
+    Document(string c) { content = c; }
+};
+
+class Printer {
+public:
+    void printDoc(Document d) {  // dependency (temporary)
+        cout << "Printing Document: " << d.content << endl;
+    }
+};
+
+int main() {
+    Document doc("Assignment File");
+    Printer p;
+    p.printDoc(doc);
+    return 0;
+}
+```
+
+### 🔹 Output:
+
+```
+Printing Document: Assignment File
+```
+
+### 🔹 Explanation:
+
+`Printer` class `Document` class ko **sirf use kar rahi hai ek function ke andar**, permanently nahi rakhti.
+That’s **Dependency relationship**.
+
+---
+
+## 🌺 FINAL SUMMARY TABLE
+
+| Relationship    | Type           | UML Symbol          | Example            | Strength  |
+| --------------- | -------------- | ------------------- | ------------------ | --------- |
+| **Association** | uses-a         | Simple line (—)     | Teacher–Department | Weak      |
+| **Aggregation** | has-a          | Empty diamond (◊)   | Library–Book       | Medium    |
+| **Composition** | has-a (strong) | Filled diamond (◆)  | House–Room         | Strong    |
+| **Inheritance** | is-a           | Arrow with triangle | Student–Person     | Strong    |
+| **Dependency**  | temporary      | Dotted arrow        | Printer–Document   | Very Weak |
+
+---
+
+Agar tu chahe toh mai **in sab UML relationships ka single combined diagram** bana kar dikhau (text-based UML style me) taaki ek glance me sab samajh aaye — chaahe?
