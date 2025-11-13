@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+template <class t>t add(t a,t b){
+    t result;
+    result=a+b;
+    return result;
+}
+int main() {
+int res1=add<int>(2,3);
+double res2=add<double>(2.3,2.5);
+cout<<"the int result is :"<<res1<<endl;
+cout<<"the double result is :"<<res2<<endl;
+    return 0;
+}
