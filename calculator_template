@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+template <class t>
+class calc{
+    private:
+t a,b;
+public:
+calc(t x,t y){
+    a=x;
+    b=y;
+}
+void display(){
+cout<<"the add is:"<<add()<<endl;
+cout<<"the sub is:"<<sub()<<endl;
+cout<<"the multiply is:"<<mul()<<endl;
+cout<<"the div is:"<<divi()<<endl;
+}
+t add(){
+    return a+b;
+}
+t sub(){
+    return a-b;
+}
+t divi(){
+    return a/b;
+}
+t mul(){
+    return a*b;
+}
+
+};
+
+int main() {
+   calc <int>c(2,3);
+   c.display();
+}
