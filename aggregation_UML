@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class employee{
+    string name;
+    public:
+    employee(string n){
+        name=n;
+    }
+    string print(){
+        return name;
+    }
+};
+class company{
+    employee *e;
+public:
+company(employee*s){
+    e=s;
+}
+void display(){
+    cout<<"the employee name is"<<e->print()<<endl;
+}
+};
+
+int main(){
+    employee e1("geet");
+company c1(&e1);
+c1.display();
+   
+   
+    return 0;
+}
+
