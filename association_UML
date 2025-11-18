@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+class student{
+    string name;
+    public:
+    student(string s){
+        name=s;
+    }
+    string display(){
+        return name;
+    }
+};
+class department{
+    string name;
+    public:
+    department(string s){
+        name=s;
+    }
+    string display(){
+        return name;
+    }
+};
+class course{
+    student *s;
+    department*d;
+    public:
+    course(student*s1,department*d1){
+        s=s1;
+        d=d1;
+    }
+    void print(){
+        cout<<"the name of student is"<<s->display()<<endl;
+        cout<<"the name of the department is:"<<d->display()<<endl;
+    }
+};
+int main(){
+    student s("geet");
+    department d("cse");
+    course c(&s,&d);
+    c.print();
+   
+    return 0;
+}
