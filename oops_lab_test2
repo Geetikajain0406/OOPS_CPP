@@ -1,0 +1,88 @@
+#include<iostream>
+using  namespace std;
+template <class t>
+t max1(t vector1[],int s){
+    t high=0;
+for(int i=0;i<s;i++){
+    if(vector1[i]>high){
+        high=vector1[i];
+    }
+}
+return high;
+}
+int main(){
+    int vec[5]={1,2,13,4,5};
+    int n=5;
+cout<<"the max number is : "<<max1<int>(vec,5)<<endl;
+return 0;}
+
+ Ans 2
+#include<iostream>
+using  namespace std;
+class author{
+    string name;
+    string email;
+public:
+    author(string n,string e){
+    name=n;
+    email=e;}
+    author(string n){
+    name =n;}
+    void showauthor(){
+    cout<<"the author name:"<<name<<endl;
+    cout<<"the author email:"<<email<<endl;
+    }
+    string getname(){
+    return name;
+    }
+    string getemail(){
+    return email;}
+};
+class publisher{
+string name;
+string loc;
+public:
+    publisher(string na){
+    name=na;}
+    publisher(string n,string l){
+    name=n;
+    loc=l;}
+    string showpublisher(){
+    return name;
+    }
+    string showpubloc(){
+        return loc;
+    }
+    };
+class book{
+string title;
+float price;
+publisher *p;
+author *a;
+int count1;
+public:
+    book(string t,float pr,author *a1,publisher *p1){
+    title=t;
+    price=pr;
+    a=a1;
+    p=p1;
+    }
+    void showbook(){
+         cout<<"the publisher details are:"<<endl;
+        cout<<p->showpublisher()<<endl;
+        cout<<p->showpubloc()<<endl;
+        cout<<"the author details are:"<<endl;
+        cout<<a->getname()<<endl;
+        cout<<a->getemail()<<endl;
+        cout<<"the rest book details are as follow"<<endl;
+        cout<<"the title : "<<title<<endl;
+        cout<<"the price is: "<<price<<endl;
+    }
+    };
+int main(){
+    author a("geetika","@geetika");
+    publisher p("geet","jiit");
+    book b("met",2.3,&a,&p);
+    b.showbook();
+return 0;}
+
