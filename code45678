@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+template <class t>
+t max1(t a,t b){
+return(a>b)?a:b;}
+template <class c>
+c min1(c a ,c b){
+return(a>b)?b:a;}
+
+int main(){
+    cout<<max1(1,2)<<endl;
+      cout<<min1(1,2)<<endl;
+return 0;}
+
+#include<iostream>
+using namespace std;
+template <class t>
+class calculator{
+private:
+    t num1,num2;
+public:
+    calculator(t n1,t n2){
+    num1=n1;
+    num2=n2;}
+    void display(){
+    cout<<"adddtion "<<add()<<endl;
+    cout<<"subtraction "<sub()<<endl;
+    cout<<"divide"<<div()<<endl;
+    cout<<"product"<<prod()<<endl;
+    }
+    t add(){
+    return num1+num2;}
+      t sub(){
+    return num1-num2;}
+      t prod(){
+    return num1*num2;}
+      t div(){
+    return num1/num2;}
+};
+
+int main(){
+    calculator<int> c(2,3);
+    c.display()
+return 0;}
+
