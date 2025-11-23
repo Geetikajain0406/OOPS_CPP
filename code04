@@ -1,0 +1,44 @@
+ANS 3
+#include <iostream>
+using namespace std;
+class house;
+class room{
+    string name;
+    house *h;
+    public:
+    room(string n,house *h1){
+        name=n;
+        h=h1;
+    }
+    void display(){
+        cout<<"the roomname is"<<name<<endl;
+    }
+};
+class house{
+    room *rooms[10];
+    int count;
+    string name;
+    public:
+    house(string n){
+        name=n;
+        count=0;
+    }
+    void addroom(string roomname){
+         rooms[count]=new room(roomname,this);
+         count++;
+    }
+    void dis(){
+        cout<<"the house name is"<<name<<endl;
+        for(int i=0;i<count;i++){
+            rooms[i]->display();
+        }
+    }
+};
+int main(){
+   house *h=new house("my house");
+   h->addroom("my room");
+   h->dis();
+   
+    return 0;
+}
+
