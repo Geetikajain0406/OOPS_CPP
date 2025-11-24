@@ -1,0 +1,72 @@
+Ans 4
+#include <iostream>
+using namespace std;
+class person{
+  string name;
+  public:
+  person(string n){
+      name=n;
+  }
+  string dis(){
+      return name;
+  }
+};
+class wheel{
+    string brand;
+    public:
+    wheel(string b){
+        brand=b;
+    }
+    string dis(){
+       return brand; 
+    }
+};
+class vehicle{
+    string name;
+    person *p;
+    wheel *w;
+    public:
+    vehicle(string n){
+        name=n;
+        p=NULL;
+        w=NULL;
+    }
+    void wheel_n(wheel *w1){
+        w=w1;
+    }
+    void owner(person *p1){
+        p=p1;
+    }
+    void display(){
+        cout<<"the car name is"<<name<<endl;
+        cout<<"the owner name is:"<<p->dis()<<endl;
+        cout<<"the brand of wheel are:"<<w->dis()<<endl;
+    }
+
+};
+class car:public vehicle{
+   public:
+   car(string n):vehicle(n){
+       
+   }
+};
+class lorry:public vehicle{
+    public:
+    lorry(string n):vehicle(n){
+        
+    }
+};
+int main(){
+    person p1("geet");
+    person p2("geetika");
+    wheel w("mrf");
+car c("bmw");
+c.wheel_n(&w);
+c.owner(&p1);
+c.display();
+lorry l("merc");
+l.wheel_n(&w);
+l.owner(&p2);
+l.display();
+    return 0;
+}
