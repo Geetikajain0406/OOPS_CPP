@@ -1,0 +1,18 @@
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    map<int, string> Students;
+
+    Students.insert({200, "Alice"});
+    Students.insert({201, "John"});
+
+    auto it = Students.find(201);
+
+    if (it != Students.end()) {
+        cout << "Found: " << it->first << " -> " << it->second << endl;
+    } else {
+        cout << "Key not found";
+    }
+}
